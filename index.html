@@ -1,30 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Анімація</title>
+  <style>
+    #cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      animation: move 5s infinite linear;
+    }
+    .face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid #000;
+      animation: colorChange 3s infinite alternate;
+    }
+    .face:nth-child(1) {
+      background-color: rgba(255, 0, 0, 0.8);
+    }
+    .face:nth-child(2) {
+      background-color: rgba(0, 255, 0, 0.8);
+    }
+    .face:nth-child(3) {
+      background-color: rgba(0, 0, 255, 0.8);
+    }
+    .face:nth-child(4) {
+      background-color: rgba(255, 255, 0, 0.8);
+    }
+    @keyframes move {
+      0% {
+        top: 0;
+        left: 0;
+      }
+      25% {
+        top: 0;
+        left: 100px;
+      }
+      50% {
+        top: 100px;
+        left: 100px;
+      }
+      75% {
+        top: 100px;
+        left: 0;
+      }
+      100% {
+        top: 0;
+        left: 0;
+      }
+    }
+    @keyframes colorChange {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="holder">
-        <h1>Title</h1>
-        <ul class="list">
-        <li>
-        <a class="gg" href="#">link1</a>
-        <ul>
-        <li><a class="gg" href="#">link2</a></li>
-        <li><a class="gg" href="#">link3</a></li>
-        </ul>
-        </li>
-        <li><a class="gg" href="https://www.youtube.com/">link4</a></li>
-        <li><a class="gg" href="https://validator.w3.org/">link5</a></li>
-        <li><a class="gg" href="#">link6</a></li>
-        </ul>
-        <p class="r">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore,
-        accusamus.</p>
-        <h1>Title</h1>
-        <p class="r">Lorem ipsum dolor sit amet.</p>
-        </div>
+  <div id="cube">
+    <div class="face"></div>
+    <div class="face"></div>
+    <div class="face"></div>
+    <div class="face"></div>
+  </div>
 </body>
 </html>
