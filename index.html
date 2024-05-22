@@ -1,103 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Examples</title>
 </head>
 <body>
-<label for="text1">Текстове поле 1:</label>
-<input type="text" id="text1">
-<br>
-<label for="text2">Текстове поле 2:</label>
-<input type="text" id="text2">
-<br>
-<button onclick="checkTextFields()">Перевірити поля</button>
-<p id="textResult"></p>
+    <h2>Вибір напою</h2>
+    <form id="beverageForm">
+        <label for="beverage">Оберіть напій:</label>
+        <select id="beverage" name="beverage">
+            <option value="coffee">Кава</option>
+            <option value="tea">Чай</option>
+            <option value="juice">Сік</option>
+        </select>
+    </form>
+    <div id="beverageMessage"></div>
 
-<label for="num1">Числове поле 1:</label>
-<input type="number" id="num1">
-<br>
-<label for="num2">Числове поле 2:</label>
-<input type="number" id="num2">
-<br>
-<button onclick="checkNumberFields()">Перевірити суму</button>
-<p id="numResult"></p>
-
-<label for="text">Текстове поле:</label>
-<input type="text" id="text">
-<br>
-<button onclick="checkTextField()">Перевірити текст</button>
-<p id="textCheckResult"></p>
-
-<label for="number">Числове поле:</label>
-<input type="number" id="number">
-<br>
-<button onclick="checkNumberRange()">Перевірити число</button>
-<p id="numberRangeResult"></p>
-
-<label for="name">Ім'я:</label>
-<input type="text" id="name">
-<br>
-<label for="email">Email:</label>
-<input type="text" id="email">
-<br>
-<label for="password">Пароль:</label>
-<input type="password" id="password">
-<br>
-<button onclick="checkForm()">Перевірити форму</button>
-<p id="formResult"></p>
-
-<script>
-  const checkTextFields = () => {
-    const text1 = document.getElementById("text1").value;
-    const text2 = document.getElementById("text2").value;
-    if (text1 && text2) {
-      document.getElementById("textResult").innerText = "Обидва поля заповнені";
-    } else {
-      document.getElementById("textResult").innerText = "Не всі поля заповнені";
-    }
-  }
-
-  const checkNumberFields = () => {
-    const num1 = Number(document.getElementById("num1").value);
-    const num2 = Number(document.getElementById("num2").value);
-    if (num1 + num2 > 10) {
-      document.getElementById("numResult").innerText = "Сума більша за 10";
-    } else {
-      document.getElementById("numResult").innerText = "Сума менша або дорівнює 10";
-    }
-  }
-
-  const checkTextField = () => {
-    const text = document.getElementById("text").value;
-    if (text.includes("JavaScript")) {
-      document.getElementById("textCheckResult").innerText = "Текст містить слово JavaScript";
-    } else {
-      document.getElementById("textCheckResult").innerText = "Текст не містить слово JavaScript";
-    }
-  }
-
-  const checkNumberRange = () => {
-    const number = Number(document.getElementById("number").value);
-    if (number > 10 && number < 20) {
-      document.getElementById("numberRangeResult").innerText = "Число входить в діапазон від 10 до 20";
-    } else {
-      document.getElementById("numberRangeResult").innerText = "Число не входить в діапазон від 10 до 20";
-    }
-  }
-
-  const checkForm = () => {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    if (name.length >= 3 && email.includes("@") && email.includes(".") && password.length >= 6) {
-
-      window.location.href = "success.html";
-    } else {
-      document.getElementById("formResult").innerText = "Помилка. Перевірте правильність заповнення форми.";
-    }
-  }
-</script>
+    <h2>Перевірка дня тижня</h2>
+    <form id="dayForm">
+        <label for="dayInput">Введіть день тижня:</label>
+        <input type="text" id="dayInput" name="dayInput">
+        <button type="button" onclick="checkDay()">Перевірити</button>
+    </form>
+    <div id="dayMessage"></div>
+    <script src="script.js"></script>
 </body>
 </html>
