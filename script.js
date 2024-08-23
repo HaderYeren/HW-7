@@ -1,70 +1,65 @@
 
-let numbersWhile = document.getElementById("numbersWhile");
-let num = 1;
-while (num <= 10) {
-    let li = document.createElement("li");
-    li.textContent = num;
-    numbersWhile.appendChild(li);
-    num++;
-}
+const categories = document.querySelectorAll('#categories .item');
+console.log(`У списку ${categories.length} категорії.`);
 
-let evenNumbersFor = document.getElementById("evenNumbersFor");
-for (let i = 2; i <= 20; i += 2) {
-    let li = document.createElement("li");
-    li.textContent = i;
-    evenNumbersFor.appendChild(li);
-}
+categories.forEach(category => {
+    const categoryTitle = category.querySelector('h2').textContent;
+    const categoryItemsCount = category.querySelectorAll('ul li').length;
+    console.log(`Категорія: ${categoryTitle}`);
+    console.log(`Кількість елементів: ${categoryItemsCount}`);
+});
 
-let multiplicationTable = document.getElementById("multiplicationTable");
-for (let i = 1; i <= 10; i++) {
-    let li = document.createElement("li");
-    li.textContent = `7 * ${i} = ${7 * i}`;
-    multiplicationTable.appendChild(li);
-}
+const ingredients = [
+    'Картопля',
+    'Гриби',
+    'Часник',
+    'Помідори',
+    'Зелень',
+    'Приправи',
+];
 
-let arrayWhile = document.getElementById("arrayWhile");
-let arr = [1, 2, 3, 4, 5];
-let index = 0;
-while (index < arr.length) {
-    let li = document.createElement("li");
-    li.textContent = arr[index];
-    arrayWhile.appendChild(li);
-    index++;
-}
+const ingredientsList = document.getElementById('ingredients');
+const ingredientsItems = ingredients.map(ingredient => {
+    const li = document.createElement('li');
+    li.textContent = ingredient;
+    return li;
+});
 
-let excludeSeven = document.getElementById("excludeSeven");
-let arrExcludeSeven = Array.from({ length: 10 }, (_, i) => i + 1);
-for (let num of arrExcludeSeven) {
-    if (num === 7) {
-        break;
-    }
-    let li = document.createElement("li");
-    li.textContent = num;
-    excludeSeven.appendChild(li);
-}
+ingredientsList.append(...ingredientsItems);
 
-let lessThanN = document.getElementById("lessThanN");
-let n = 15;
-let num = 1;
-while (num < n) {
-    let li = document.createElement("li");
-    li.textContent = num;
-    lessThanN.appendChild(li);
-    num++;
-    if (num >= n) {
-        break;
-    }
-}
+const images = [
+    {
+        url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        alt: 'White and Black Long Fur Cat',
+    },
+    {
+        url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+    },
+    {
+        url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        alt: 'Group of Horses Running',
+    },
+];
 
-let notMultipleOfThree = document.getElementById("notMultipleOfThree");
-num = 1;
-while (num <= 20) {
-    if (num % 3 === 0) {
-        num++;
-        continue;
-    }
-    let li = document.createElement("li");
-    li.textContent = num;
-    notMultipleOfThree.appendChild(li);
-    num++;
-}
+const gallery = document.getElementById('gallery');
+const galleryItems = images.map(({ url, alt }) => {
+    return `<li><img src="${url}" alt="${alt}" width="300"></li>`;
+}).join('');
+
+gallery.insertAdjacentHTML('beforeend', galleryItems);
+
+let counterValue = 0;
+const valueSpan = document.getElementById('value');
+const decrementButton = document.querySelector('button[data-action="decrement"]');
+const incrementButton = document.querySelector('button[data-action="increment"]');
+
+decrementButton.addEventListener('click', () => {
+    counterValue -= 1;
+    valueSpan.textContent = counterValue;
+});
+
+incrementButton.addEventListener('click', () => {
+    counterValue += 1;
+    valueSpan.textContent = counterValue;
+});
